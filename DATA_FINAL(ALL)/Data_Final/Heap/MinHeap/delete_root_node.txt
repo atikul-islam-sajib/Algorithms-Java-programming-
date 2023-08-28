@@ -1,0 +1,31 @@
+public void deleteRoot()
+    {
+        BT[0] = BT[heap_size-1];
+        heap_size = heap_size -1;
+        heapify_top_down(0);
+
+    }
+    public void heapify_top_down(int parent)
+    {
+        int left_child,right_child,max_index=0,temp=0;
+        left_child =(2*parent) + 1;
+        right_child = (2*parent) + 2;
+        max_index = parent;
+        if ((left_child<heap_size) &&(BT[left_child]<BT[parent]))
+        {
+            max_index = left_child;
+        }
+        if ((right_child<heap_size) &&(BT[right_child]<BT[max_index]))
+        {
+            max_index = right_child;
+        }
+        if (max_index!=parent)
+        {
+            temp = BT[parent];
+            BT[parent] = BT[max_index];
+            BT[max_index] = temp;
+            heapify_top_down(max_index);
+        }
+
+
+    }

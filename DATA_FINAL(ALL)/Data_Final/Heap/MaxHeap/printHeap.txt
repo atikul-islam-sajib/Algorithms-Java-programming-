@@ -1,0 +1,8 @@
+public void print()
+    {
+        for (int i =0;i<heap_size;i++)
+        {
+            System.out.print(BT[i]+" ");
+        }
+        System.out.println();
+    }

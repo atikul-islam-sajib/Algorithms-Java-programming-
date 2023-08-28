@@ -1,0 +1,16 @@
+public void search_data(int search_data)
+    {
+        for (int i=0; i<=heap_size;i++)
+        {
+            try {
+                if (BT[i]==search_data)
+                {
+                    System.out.print("Found: "+search_data);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Not Found: ");
+            }
+        }
+    }

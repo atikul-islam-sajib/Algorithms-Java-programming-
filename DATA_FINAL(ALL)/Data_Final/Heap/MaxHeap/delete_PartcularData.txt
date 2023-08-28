@@ -1,0 +1,47 @@
+public void heapify_top_down(int parent)
+    {
+        int left_child, right_child,max_index,temp;
+
+        left_child = (2*parent) + 1;
+        right_child = (2*parent) + 2;
+
+        max_index = parent;
+        if((left_child<heap_size) && (BT[left_child] > BT[parent]))
+            max_index = left_child;
+        if((right_child<heap_size) && (BT[right_child] > BT[max_index]))
+            max_index = right_child;
+
+        if(parent != max_index)
+        {
+            temp =  BT[parent];
+            BT[parent] = BT[max_index];
+            BT[max_index] = temp;
+            heapify_top_down(max_index);
+        }
+    }
+    public void deleteParticularData(int search_data)
+    {
+        for (int i=0;i<=heap_size;i++)
+        {
+            try {
+                if (BT[i] == search_data)
+                {
+                    BT[i] = BT[heap_size-1];
+                    heap_size = heap_size-1;
+                    heapify_top_down(i);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Data not found: ");
+            }
+        }
+    }
+    public void print()
+    {
+        for (int i =0;i<heap_size;i++)
+        {
+            System.out.print(BT[i]+" ");
+        }
+        System.out.println();
+    }

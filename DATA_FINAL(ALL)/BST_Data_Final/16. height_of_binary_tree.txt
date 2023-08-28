@@ -1,0 +1,20 @@
+int height = 0;
+    public int getHeight_of_binaryTree(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+        int left = getHeight_of_binaryTree(node.left);
+        int right = getHeight_of_binaryTree(node.right);
+        if (left > right)
+        {
+             height = 1 + left;
+        }
+        else
+        {
+             height = 1 + right;
+        }
+        return height;
+
+    }

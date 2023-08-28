@@ -1,0 +1,24 @@
+public int getParent(Node node, int value)
+    {
+        Node parent = null;
+        int getParent = 0;
+        while (node != null)
+        {
+            if (value > node.data)
+            {
+                parent = node;
+                node = node.right;
+            }
+            else if(value < node.data)
+            {
+                parent = node;
+                node = node.left;
+            }
+            else
+            {
+                getParent = parent.data;
+                break;
+            }
+        }
+        return getParent;
+    }

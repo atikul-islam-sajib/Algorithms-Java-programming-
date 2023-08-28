@@ -1,0 +1,32 @@
+int getSum =0;
+    public void checkPairSum(Node nodeLeft, Node nodeRight,int value)
+    {
+        if (nodeLeft == null )
+            return;
+        if (nodeRight == null)
+            return;
+        getSum = nodeLeft.data + nodeRight.data;
+        if (getSum == value)
+        {
+            System.out.print(nodeLeft.data+" "+nodeRight.data);
+        }
+        else
+        {
+            checkPairSum(nodeLeft.left,nodeRight.left,value);
+            checkPairSum(nodeLeft.left,nodeRight.right,value);
+            checkPairSum(nodeLeft.right,nodeRight.left,value);
+            checkPairSum(nodeLeft.right,nodeRight.right,value);
+
+        }
+
+    }
+    public void printPairSum(Node node,int value)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        checkPairSum(node.left,node.right,value);
+    }
+
+//just call the printPairSum from main method

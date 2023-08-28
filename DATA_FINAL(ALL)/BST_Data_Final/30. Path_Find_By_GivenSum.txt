@@ -1,0 +1,23 @@
+Stack<Integer> stackPrintPath = new Stack<>();
+     int sumPath = 0;
+     public void printPathGivenSum(Node node, int value)
+     {
+         if (node == null)
+         {
+             return;
+         }
+         stackPrintPath.push(node.data);
+         sumPath = sumPath + node.data;
+         if (sumPath == value)
+         {
+             System.out.println(stackPrintPath);
+         }
+         printPathGivenSum(node.left,value);
+         printPathGivenSum(node.right,value);
+         sumPath = sumPath - node.data;
+         if (!stackPrintPath.isEmpty())
+         {
+             stackPrintPath.pop();
+         }
+
+     }

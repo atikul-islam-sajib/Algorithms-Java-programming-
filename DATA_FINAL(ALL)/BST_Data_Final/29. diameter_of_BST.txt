@@ -1,0 +1,34 @@
+int h=0;
+    public int HeightForD(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+        int left = HeightForD(node.left);
+        int right = HeightForD(node.right);
+        if (left>right)
+        {
+            h = 1 + left;
+        }
+        else
+        {
+            h = 1 + right;
+        }
+        return h;
+    }
+    int sumForHei=0;
+    public int diameter(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+        int lHeight = HeightForD(node.left);
+        int rHight = HeightForD(node.right);
+        sumForHei = 1 + lHeight + rHight;
+        int lDiameter = diameter(node.left);
+        int rDiameter = diameter(node.right);
+        return Math.max(lHeight + rHight  + 1, Math.max(lDiameter,rDiameter));
+
+    }

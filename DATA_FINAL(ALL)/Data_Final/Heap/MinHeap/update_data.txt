@@ -1,0 +1,39 @@
+public void updateData(int previous_data, int update_value)
+    {
+        for (int i=0;i<=heap_size;i++)
+        {
+            try {
+                if (BT[i]==previous_data)
+                {
+                    BT[i] = update_value;
+                    heapify_bottom_up(i);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Data not found: ");
+            }
+        }
+    }
+    public void heapify_bottom_up(int index)
+    {   int temp = 0;
+        while (true)
+        {
+            if (BT[index]>=BT[(index-1)/2]) break;
+            else
+                temp = BT[index];
+                BT[index] = BT[(index-1)/2];
+                BT[(index-1)/2] = temp;
+                index = (index-1)/2;
+
+
+        }
+    }
+    public void print()
+    {
+        for (int i=0;i<heap_size;i++)
+        {
+            System.out.print(BT[i]+" ");
+        }
+        System.out.println();
+    }

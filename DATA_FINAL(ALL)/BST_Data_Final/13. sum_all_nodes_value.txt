@@ -1,0 +1,12 @@
+int addition =0;
+    public int get_addition_allNodesValue(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+        get_addition_allNodesValue(node.left);
+        get_addition_allNodesValue(node.right);
+        addition = addition + node.data;
+        return addition;
+    }

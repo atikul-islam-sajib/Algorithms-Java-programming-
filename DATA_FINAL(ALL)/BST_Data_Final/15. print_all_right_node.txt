@@ -1,0 +1,9 @@
+public void print_allRight_node(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        System.out.print(node.data+" ");
+        print_allRight_node(node.right);
+    }

@@ -1,0 +1,35 @@
+Queue<Node> queueLevelByLevel = new LinkedList<>();
+    int countNull =0;
+    public void printLevelByLevelOrder(Node node)
+    {
+        if (node == null) return;
+        queueLevelByLevel.add(node);
+        queueLevelByLevel.add(null);
+        while (!queueLevelByLevel.isEmpty())
+        {
+            Node check = queueLevelByLevel.remove();
+            if (check == null)
+            {
+                System.out.println();
+                queueLevelByLevel.add(null);
+                countNull = countNull + 1;
+                if (countNull == 2)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                System.out.print(check.data+" ");
+                if (check.left !=null)
+                {
+                    queueLevelByLevel.add(check.left);
+                }
+                if (check.right !=null)
+                {
+                    queueLevelByLevel.add(check.right);
+                }
+                countNull =0;
+            }
+        }
+    }

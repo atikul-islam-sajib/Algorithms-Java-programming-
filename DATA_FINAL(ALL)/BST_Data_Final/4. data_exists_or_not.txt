@@ -1,0 +1,25 @@
+public boolean isExistsOrNot(Node node, int value)
+    {
+        boolean isExists = false;
+        if (node == null)
+        {
+            return false;
+        }
+        while (node != null)
+        {
+            if (value > node.data)
+            {
+                node = node.right;
+            }
+            else if(value < node.data)
+            {
+                node = node.left;
+            }
+            else
+            {
+                isExists = true;
+                break;
+            }
+        }
+        return isExists;
+    }

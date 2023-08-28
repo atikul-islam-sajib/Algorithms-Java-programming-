@@ -1,0 +1,17 @@
+int maxValue = 0;
+    public int getMax(Node node)
+    {
+        if (node == null)
+        {
+            return 1;
+        }
+        while (node.right != null)
+        {
+            if (maxValue < node.right.data)
+            {
+                maxValue = node.right.data;
+                node = node.right;
+            }
+        }
+        return maxValue;
+    }

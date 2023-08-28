@@ -1,0 +1,40 @@
+int leftChild = 0;
+     int rightChild = 0;
+     public void partcularNodeChild(Node node, int value)
+     {
+         if (node == null)
+         {
+             return;
+         }
+         if (node.data>value)
+         {
+             partcularNodeChild(node.left,value);
+         }
+         if (node.data < value)
+         {
+             partcularNodeChild(node.right,value);
+         }
+         if (node.data == value)
+         {
+             if (node.left !=null)
+             {
+                 leftChild = node.left.data;
+                 System.out.println("Left Child: "+leftChild);
+             }
+             if (node.left ==null)
+             {
+                 System.out.println("Left Child not available: ");
+             }
+
+             if (node.right !=null)
+             {
+                 rightChild = node.right.data;
+                 System.out.println("Right Child: "+rightChild);
+             }
+             if (node.right ==null)
+             {
+                 System.out.println("Right Child not available: ");
+             }
+
+         }
+     }

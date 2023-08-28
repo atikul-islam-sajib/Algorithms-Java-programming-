@@ -1,0 +1,15 @@
+int count =0;
+public int count_numberOf_leafNode(Node node)
+    {
+        if ( node == null)
+        {
+            return 0;
+        }
+        count_numberOf_leafNode(node.left);
+        count_numberOf_leafNode(node.right);
+        if (node.left == null && node.right ==null)
+        {
+            count = count + 1;
+        }
+        return count;
+    }

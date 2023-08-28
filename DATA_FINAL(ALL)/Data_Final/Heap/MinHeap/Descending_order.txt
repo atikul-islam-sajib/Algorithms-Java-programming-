@@ -1,0 +1,64 @@
+int[] array = new int[15];
+    int index =0;
+    public void print_descendingOrder()
+    {
+        for (int i=0;i<heap_size;i++){
+            array[index] = BT[i];
+            index = index + 1;
+        }
+        for (int i=0;i<index;i++)
+        {
+            ConvertMaxHeap(i);
+        }
+        printDescending();
+    }
+    public void ConvertMaxHeap(int index)
+    {   int temp = 0;
+        while (true)
+        {
+            if (array[index]<=array[(index-1)/2]) break;
+            else
+                temp = array[index];
+            array[index] = array[(index-1)/2];
+            array[(index-1)/2] = temp;
+            index = (index-1)/2;
+
+
+        }
+    }
+    public void printDescending()
+    {
+        while (index !=0)
+        {
+            System.out.print(array[0]+" ");
+            array[0] = array[index-1];
+            index = index -1;
+            Max(0);
+           printDescending();
+
+        }
+    }
+    public void Max(int parent)
+    {
+        int left_child,right_child,max_index=0,temp=0;
+        left_child =(2*parent) + 1;
+        right_child = (2*parent) + 2;
+        max_index = parent;
+        if ((left_child<index) &&(array[left_child]>array[parent]))
+        {
+            max_index = left_child;
+        }
+        if ((right_child<index) &&(array[right_child]>array[max_index]))
+        {
+            max_index = right_child;
+        }
+        if (max_index!=parent)
+        {
+            temp = array[parent];
+            array[parent] = array[max_index];
+            array[max_index] = temp;
+            heapify_top_down(max_index);
+        }
+
+
+    }

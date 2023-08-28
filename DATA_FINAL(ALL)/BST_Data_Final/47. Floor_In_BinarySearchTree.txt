@@ -1,0 +1,32 @@
+int getFloor =0;
+    public int printFloor(Node node, int value)
+    {
+        if (node == null) return 0;
+        if (node.data<value)
+        {
+            getFloor = checkFloor(node.right,value);
+        }
+        return getFloor;
+    }
+    int Floor = 0;
+    public int checkFloor(Node node, int value)
+    {
+        if (node == null) return 0;
+        while (node!=null)
+        {
+            if (node.left !=null && node.data>value)
+            {
+                node = node.left;
+            }
+            else if (node.right !=null && node.data<value)
+            {
+                node = node.right;
+            }
+            else
+            {
+                Floor = node.data;
+                break;
+            }
+        }
+        return Floor;
+    }

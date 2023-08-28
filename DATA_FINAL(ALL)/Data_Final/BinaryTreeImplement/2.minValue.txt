@@ -1,0 +1,9 @@
+int minVaue = 1000;
+    public int minValueFind(Node node)
+    {
+        if (node == null) return 0;
+        minVaue = Math.min(minVaue,node.data);
+        minValueFind(node.left);
+        minValueFind(node.right);
+        return minVaue;
+    }

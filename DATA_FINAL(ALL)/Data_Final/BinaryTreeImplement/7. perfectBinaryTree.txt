@@ -1,0 +1,18 @@
+boolean perfectOrNot = false;
+    public boolean checkPerfectTreeOrNot(Node node)
+    {
+        if (node == null) return true;
+        if (node.left !=null && node.right !=null)
+        {
+            perfectOrNot = true;
+        }
+        else if (node.left!=null && node.right==null)
+        {
+            perfectOrNot = false;
+        }
+        if (node.left == null && node.right !=null)
+        {
+           perfectOrNot = false;
+        }
+        return perfectOrNot;
+    }

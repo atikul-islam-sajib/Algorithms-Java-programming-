@@ -1,0 +1,89 @@
+package BinaryTreeImplement;
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+
+    public Node(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+class BT
+{
+    Node a;
+
+    public BT() {
+        this.a = null;
+    }
+
+    public BT(Node node) {
+        this.a = node;
+    }
+    public void inorder(Node node)
+    {
+        if (node == null) return;
+        inorder(node.left);
+        System.out.print(node.data+" ");
+        inorder(node.right);
+    }
+    int height = 0;
+    public int height(Node node)
+    {
+        if (node == null) return 0;
+        int left = height(node.left);
+        int right = height(node.right);
+        if (left>right)
+        {
+            height = 1 + left;
+        }
+        else
+        {
+            height = 1 + right;
+        }
+        return height;
+
+    }
+    int sum =0;
+    public int sum_leafNode_value(Node node)
+    {
+        if (node == null)
+        {
+            return 1;
+        }
+        sum_leafNode_value(node.left);
+        sum_leafNode_value(node.right);
+        if (node.left == null && node.right == null)
+        {
+            sum = sum + node.data;
+        }
+        return sum;
+    }
+
+}
+public class BinaryTree {
+    public static void main(String[] args) {
+        Node n1 = new Node(1);
+        Node n10 = new Node(10);
+        Node n4 = new Node(4);
+        Node n6 = new Node(6);
+        Node n2 = new Node(2);
+        Node n12 = new Node(12);
+        //...............................//
+        n1.left = n10;
+        n1.right = n4;
+        n10.left = n6;
+        n4.right = n2;
+        n2.left = n12;
+        //.............................//
+        BT a = new BT(n1);   // here n1 is the root node  and we call the function through a
+//        a.inorder(n1);
+       // System.out.println(a.height(n1));
+        System.out.println(a.sum_leafNode_value(n1));
+
+
+
+    }
+}

@@ -1,0 +1,47 @@
+Queue<Node> queueLevelByLevel = new LinkedList<>();
+    int countNull =0;
+    int sumPrintLevel =0;
+    int i =1;
+    int[] array = new int[1];
+    int count =0;
+    public void printLevelByLevelOrder(Node node)
+    {
+        if (node == null) return;
+        queueLevelByLevel.add(node);
+        queueLevelByLevel.add(null);
+        while (!queueLevelByLevel.isEmpty())
+        {
+            Node check = queueLevelByLevel.remove();
+            /*if (check !=null)
+            {
+                sumPrintLevel = sumPrintLevel + check.data;
+            }*/
+            if (check == null)
+            {
+//                System.out.print("Level: "+i+" = "+sumPrintLevel);
+//                System.out.println();
+//                i= i+ 1;
+                queueLevelByLevel.add(null);
+                countNull = countNull + 1;
+//                sumPrintLevel =0;
+                count =0;
+                if (countNull == 2)
+                {
+                    break;
+                }
+            }
+            else
+            {   count ++;
+                if (check.left != null) {
+                    queueLevelByLevel.add(check.left);
+                }
+                if (check.right != null) {
+                    queueLevelByLevel.add(check.right);
+                }
+                if (count ==1) {
+                    System.out.print(check.data+" ");
+                }
+                countNull = 0;
+            }
+        }
+    }

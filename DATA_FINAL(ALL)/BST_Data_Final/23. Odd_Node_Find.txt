@@ -1,0 +1,13 @@
+public void print_oddNode(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        if (node.data % 2 != 0)
+        {
+            System.out.print(node.data+" ");
+        }
+        print_oddNode(node.left);
+        print_oddNode(node.right);
+    }

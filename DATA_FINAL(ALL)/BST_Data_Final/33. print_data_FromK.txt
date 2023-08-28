@@ -1,0 +1,13 @@
+ public void printNodeFromParticularDistance(Node node, int k)
+     {
+         if (node == null)
+         {
+             return;
+         }
+         if (k==0)
+         {
+             System.out.print(node.data+" ");
+         }
+         printNodeFromParticularDistance(node.left,k-1);
+         printNodeFromParticularDistance(node.right,k-1);
+     }

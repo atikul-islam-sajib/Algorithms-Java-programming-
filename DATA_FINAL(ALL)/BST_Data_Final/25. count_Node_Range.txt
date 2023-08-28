@@ -1,0 +1,16 @@
+int countRange = 0;
+    public int count_nodeGivenRange(Node node, int startRange, int endRange)
+    {
+            if (node == null)
+            {
+                return 0;
+            }
+            if ((startRange < node.data) && node.data<endRange) {
+                countRange ++;
+                //System.out.println(countRange);
+            }
+            count_nodeGivenRange(node.left, startRange, endRange);
+            count_nodeGivenRange(node.right, startRange, endRange);
+
+        return countRange;
+    }

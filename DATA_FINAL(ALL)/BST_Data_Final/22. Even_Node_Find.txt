@@ -1,0 +1,20 @@
+public void print_evenNode(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        if (node.data % 2 ==0)
+        {
+            System.out.print(node.data+" ");
+        }
+        if (node.left != null)
+        {
+            print_evenNode(node.left);
+        }
+        if (node.right != null)
+        {
+            print_evenNode(node.right);
+        }
+
+    }

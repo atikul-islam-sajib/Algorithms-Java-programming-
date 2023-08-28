@@ -1,0 +1,19 @@
+public void printWhoHaveNoSiblings(Node node)
+    {
+        if (node == null) return;
+        if (node.left !=null && node.right !=null)
+        {
+            printWhoHaveNoSiblings(node.left);
+            printWhoHaveNoSiblings(node.right);
+        }
+        else if(node.left==null )
+        {
+            System.out.print(node.data+" ");
+            printWhoHaveNoSiblings(node.right);
+        }
+         else if (node.right==null)
+        {
+            System.out.print(node.data+" ");
+            printWhoHaveNoSiblings(node.left);
+        }
+    }

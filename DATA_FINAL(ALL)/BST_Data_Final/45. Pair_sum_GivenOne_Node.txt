@@ -1,0 +1,23 @@
+public void printPairGivenSum(Node node,Node node1, int value)
+    {
+        if (node == null) return;
+        checkPairGivenSum(node,node1.right,value);
+        printPairGivenSum(node.left,node1,value);
+        printPairGivenSum(node.right,node1,value);
+    }
+    public void checkPairGivenSum(Node node, Node node1,int value)
+    {
+        if (node == null || node1 == null) return;
+        int sum = node.data + node1.data;
+        if (sum == value)
+        {
+            System.out.print("("+node.data+","+node1.data+")");
+        }
+        else
+        {
+            checkPairGivenSum(node,node1.left,value);
+            checkPairGivenSum(node,node1.right,value);
+        }
+    }
+//here root pass two times same
+//a.printPairGivenSum(root,root,24);

@@ -1,0 +1,19 @@
+Stack<Integer> stack = new Stack<>();
+    public void print_root_toLeaf(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        stack.push(node.data);
+        print_root_toLeaf(node.left);
+        if (node.right == null && node.right == null)
+        {
+            if (!stack.isEmpty())
+            {
+                System.out.println(stack);
+            }
+        }
+        print_root_toLeaf(node.right);
+        stack.pop();
+    }

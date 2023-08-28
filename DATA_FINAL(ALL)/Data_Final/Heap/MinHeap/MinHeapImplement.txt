@@ -1,0 +1,58 @@
+package Heap_Data_Structure_Final;
+//10 5 1 0 3
+class MinHeap
+{
+    int[] BT;
+    int heap_size;
+
+    public MinHeap()
+    {
+        BT = new int[5];
+        heap_size = 0;
+    }
+    public void insert(int value)
+    {
+        try {
+            BT[heap_size] = value;
+            heap_size = heap_size + 1;
+            heapify_bottom_up(heap_size-1);
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("Array index out of bounds: ");
+        }
+
+    }
+    public void heapify_bottom_up(int index)
+    {   int temp = 0;
+        while (true)
+        {
+            if (BT[index]>=BT[(index-1)/2]) break;
+            else
+                temp = BT[index];
+                BT[index] = BT[(index-1)/2];
+                BT[(index-1)/2] = temp;
+                index = (index-1)/2;
+
+
+        }
+    }
+    public void print()
+    {
+        for (int i=0;i<heap_size;i++)
+        {
+            System.out.print(BT[i]+" ");
+        }
+        System.out.println();
+    }
+}
+public class MinHeapImplementation {
+    public static void main(String[] args) {
+       MinHeap heap = new MinHeap();
+       heap.insert(10);
+       heap.insert(5);
+       heap.insert(1);
+       heap.insert(0);
+       heap.insert(3);
+       heap.print();
+    }
+}

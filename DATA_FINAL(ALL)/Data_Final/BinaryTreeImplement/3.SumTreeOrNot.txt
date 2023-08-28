@@ -1,0 +1,22 @@
+int getSumCheck =0;
+    boolean sumTreeOrNot = false;
+    public int checkLeftRightSubTree(Node node)
+    {
+        if (node == null) return 0;
+        return node.data + checkLeftRightSubTree(node.left) + checkLeftRightSubTree(node.right);
+    }
+    public boolean printSumTreeOrNot(Node node)
+    {
+        int leftSubTree = checkLeftRightSubTree(node.left);
+        int rightSubTree = checkLeftRightSubTree(node.right);
+        getSumCheck = leftSubTree + rightSubTree;
+        if (getSumCheck == node.data)
+        {
+            sumTreeOrNot = true;
+        }
+        else
+        {
+            sumTreeOrNot = false;
+        }
+        return sumTreeOrNot;
+    }

@@ -1,0 +1,18 @@
+Queue<Node> queueBFS = new LinkedList<>();
+    public void print_BFS(Node node)
+    {
+        queueBFS.add(node);
+        while (!queueBFS.isEmpty())
+        {
+            node = queueBFS.remove();
+            System.out.print(node.data+" ");
+            if (node.left !=null)
+            {
+                queueBFS.add(node.left);
+            }
+            if (node.right != null)
+            {
+                queueBFS.add(node.right);
+            }
+        }
+    }

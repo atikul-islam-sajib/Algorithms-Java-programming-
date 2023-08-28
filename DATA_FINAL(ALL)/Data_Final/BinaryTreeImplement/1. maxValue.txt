@@ -1,0 +1,8 @@
+public int maxValueFind(Node node)
+    {
+        if (node == null) return 0;
+        maxValue = Math.max(maxValue,node.data);
+        maxValueFind(node.left);
+        maxValueFind(node.right);
+        return maxValue;
+    }
