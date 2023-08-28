@@ -1,0 +1,12 @@
+int size_of_binaryTree = 0;
+    public int getSize_of_binaryTree(Node node)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+        int left = getSize_of_binaryTree(node.left);
+        int right = getSize_of_binaryTree(node.right);
+        size_of_binaryTree = 1 + left + right;
+        return size_of_binaryTree;
+    }

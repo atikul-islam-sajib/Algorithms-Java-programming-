@@ -1,0 +1,29 @@
+Stack<Integer> stackAncestor = new Stack<>();
+     public void printAncestor(Node node,int value)
+     {
+         if (node == null)
+         {
+             return;
+         }
+         if (node.data>value)
+         {
+             stackAncestor.push(node.data);
+             printAncestor(node.left,value);
+         }
+         else if (node.data<value)
+         {
+             stackAncestor.push(node.data);
+             printAncestor(node.right,value);
+         }
+         else if (node.data == value)
+         {
+             if (!stackAncestor.isEmpty())
+             {
+                 while (!stackAncestor.isEmpty())
+                 {
+                     System.out.print(stackAncestor.peek()+" ");
+                     stackAncestor.pop();
+                 }
+             }
+         }
+     }

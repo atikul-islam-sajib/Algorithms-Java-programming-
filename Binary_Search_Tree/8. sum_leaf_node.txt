@@ -1,0 +1,14 @@
+public int sum_leafNode_value(Node node)
+    {
+        if (node == null)
+        {
+            return 1;
+        }
+        sum_leafNode_value(node.left);
+        sum_leafNode_value(node.right);
+        if (node.left == null && node.right == null)
+        {
+            sum = sum + node.data;
+        }
+        return sum;
+    }

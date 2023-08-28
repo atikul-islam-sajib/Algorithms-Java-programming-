@@ -1,0 +1,57 @@
+int FromRightSubTree=0;
+    public int InorderSuccessorRightSubtreePresent(Node node)
+     {
+         if (node == null)
+         {
+             return 0;
+         }
+         int minValue = Math.min(node.data,node.data);
+         InorderSuccessorRightSubtreePresent(node.left);
+         return minValue;
+     }
+     Stack<Integer> stackInorder = new Stack<>();
+     int searchData = 0;
+     public int printInorderSuccessor(Node node, int value)
+     {
+         if (node == null)
+         {
+             return 0;
+         }
+         if (node.data>value)
+         {   stackInorder.push(node.data);
+             printInorderSuccessor(node.left,value);
+         }
+         else if(node.data<value)
+         {   stackInorder.push(node.data);
+             printInorderSuccessor(node.right,value);
+         }
+         else if(node.data == value)
+         {    searchData = node.data;
+             if (node.right!=null)
+             {
+                 FromRightSubTree = InorderSuccessorRightSubtreePresent(node.right);
+             }
+             else if(node.right == null)
+             {
+                 if (!stackInorder.isEmpty())
+                 {
+                     while (!stackInorder.isEmpty())
+                     {
+                         int peekData = stackInorder.peek();
+                         if (searchData<=peekData)
+                         {
+                             FromRightSubTree = peekData;
+                             break;
+                         }
+                         else
+                         {
+                             stackInorder.pop();
+                         }
+                     }
+                 }
+             }
+         }
+         return FromRightSubTree;
+     }
+
+//call the function------printInorderSuccessor

@@ -1,0 +1,13 @@
+public void print_distance_fromK(Node node, int k)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        if (k ==0)
+        {
+            System.out.print(node.data+" ");
+        }
+        print_distance_fromK(node.left,k-1);
+        print_distance_fromK(node.right,k-1);
+    }

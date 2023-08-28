@@ -1,0 +1,88 @@
+public int getNeighbour(Node node, int value)
+    {
+        Node store = null;
+        int neighbour = 0;
+        int flag =0;
+        while (node != null)
+        {
+            if (value > node.data)
+            {
+                store = node;
+                node = node.right;
+
+            }
+            else if(value < node.data)
+            {
+                store = node;
+                node = node.left;
+            }
+            else
+            {
+                if (node.data == value)
+                {
+                    neighbour = store.right.data;
+                    break;
+
+                }
+            }
+        }
+        return neighbour;
+    }
+
+.................................
+
+public int findSiblings(Node node, int value)
+     {
+         Node ParentFind = null;
+         int SiblingsFind = 0;
+         int leftSiblings = 0;
+         int rightSiblings =0;
+         while (node != null)
+         {
+             if (node.data>value)
+             {
+                 ParentFind = node;
+                 node = node.left;
+                 leftSiblings = 1;
+                 rightSiblings = 0;
+             }
+             else if(node.data<value)
+             {
+                 ParentFind = node;
+                 node = node.right;
+                 rightSiblings = 1;
+                 leftSiblings = 0;
+             }
+             else
+             {
+                 if (rightSiblings == 1)
+                 {
+                     if (ParentFind.left !=null) {
+                         SiblingsFind = ParentFind.left.data;
+                         break;
+                     }
+                     else
+                     {
+                         SiblingsFind = -1;
+                         break;
+                     }
+                 }
+                 if (leftSiblings == 1)
+                 {
+                     if (ParentFind.right !=null) {
+                         SiblingsFind = ParentFind.right.data;
+                         break;
+
+                     }
+                     else
+                     {
+                         SiblingsFind = -1;
+                         break;
+                     }
+                 }
+
+
+             }
+         }
+         return SiblingsFind;
+     }

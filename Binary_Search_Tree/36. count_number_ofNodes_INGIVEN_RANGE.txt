@@ -1,0 +1,13 @@
+int countNodesGivenRange = 0;
+     public int CountNodesInGivenRange(Node node, int range1,int range2)
+     {
+         if (node == null) return 0;
+         if (node.data>=range1 && node.data<=range2)
+         {
+             countNodesGivenRange = countNodesGivenRange + 1;
+         }
+         CountNodesInGivenRange(node.left,range1,range2);
+         CountNodesInGivenRange(node.right,range1,range2);
+         return countNodesGivenRange;
+
+     }

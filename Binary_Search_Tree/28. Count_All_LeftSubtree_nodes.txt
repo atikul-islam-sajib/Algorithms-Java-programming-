@@ -1,0 +1,13 @@
+public int CountLeftSubtreeNodes(Node node)
+     {
+         if (node==null)
+         {
+             return 0;
+         }
+         return 1 + CountAllLeafNodes(node.left) + CountAllLeafNodes(node.right);
+     }
+     public int printCountLeftSubTreeNodes(Node node)
+     {
+         int result = CountLeftSubtreeNodes(node.left);
+         return result;
+     }

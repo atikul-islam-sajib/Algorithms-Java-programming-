@@ -1,0 +1,27 @@
+Stack<Integer> stackClosestElement = new Stack<>();
+    int ClosestElement = 0;
+    int second =0;
+     public int printClosestElement(Node node, int value)
+     {
+         if (node==null) return 0;
+         if (node.data<=value)
+         {
+             stackClosestElement.push(node.data);
+             printClosestElement(node.left,value);
+             printClosestElement(node.right,value);
+         }
+         else
+         {
+             printClosestElement(node.left,value);
+             printClosestElement(node.right,value);
+         }
+
+         while (!stackClosestElement.isEmpty()) {
+             if (!stackClosestElement.isEmpty()) {
+                 int firstElement = stackClosestElement.pop();
+                 ClosestElement = Math.max(firstElement, second);
+                 second = ClosestElement;
+             }
+         }
+         return ClosestElement;
+     }

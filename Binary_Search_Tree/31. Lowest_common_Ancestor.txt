@@ -1,0 +1,15 @@
+public void printLowestCommonAncestor(Node node, int value1, int value2)
+     {
+         if (node.data>Math.max(value1,value2))
+         {
+             printLowestCommonAncestor(node.left,value1,value2);
+         }
+         else if(node.data<Math.min(value1,value2))
+         {
+             printLowestCommonAncestor(node.right,value1,value2);
+         }
+         else
+         {
+             System.out.println(node.data);
+         }
+     }

@@ -1,0 +1,16 @@
+int minValue = 0;
+    public int getMinValue(Node node)
+    {
+        if (node == null)
+        {
+            return 1;
+        }
+        while (node.left !=null)
+        {
+            if (node.data>node.left.data)
+            {
+                node = node.left;
+            }
+        }
+        return node.data;
+    }

@@ -1,0 +1,10 @@
+public void printGivenRange(Node node, int range1, int range2)
+     {
+         if (node == null) return;
+         if (node.data >=range1 && node.data<=range2)
+         {
+             System.out.print(node.data+" ");
+         }
+         printGivenRange(node.left,range1,range2);
+         printGivenRange(node.right,range1,range2);
+     }
