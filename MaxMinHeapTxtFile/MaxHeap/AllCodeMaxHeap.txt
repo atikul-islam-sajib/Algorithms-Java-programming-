@@ -1,0 +1,228 @@
+package Heap_Data_Structure_Final;
+
+import GUI_Rumman_Final.Example1;
+
+import java.util.Scanner;
+
+class MaxHeap
+{
+    int[] BT;
+    int heap_size;
+    int count;
+    public MaxHeap()
+    {
+        BT = new int[5];
+        heap_size = 0;
+        count =0;
+    }
+    public void insert(int value)
+    {   try {
+            BT[heap_size] = value;
+            heap_size = heap_size + 1;
+            heapify_bottom_up(heap_size-1);
+        }catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("Array index out of bounds: ");
+        }
+    }
+    public void heapify_bottom_up(int index)
+    {
+        int temp = 0;
+        while (true)
+        {
+            if (BT[index]<=BT[(index-1)/2])
+            {
+                break;
+            }
+            else
+            {
+                temp = BT[index];
+                BT[index]= BT[(index-1)/2];
+                BT[(index-1)/2] = temp;
+                index = (index-1)/2;
+            }
+        }
+    }
+    public void searchNumber(int search_data)
+    {
+        for (int i=0; i<=heap_size;i++)
+        {
+            try {
+                if (BT[i]==search_data)
+                {
+                    System.out.print("Found: "+search_data);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Not Found: ");
+            }
+        }
+    }
+    public void print()
+    {
+        for (int i =0;i<heap_size;i++)
+        {
+            System.out.print(BT[i]+" ");
+        }
+        System.out.println();
+    }
+    public void deleteRoot()
+    {
+        BT[0] = BT[heap_size-1];
+        heap_size = heap_size -1;
+        heapify_top_down(0);
+
+    }
+    public void heapify_top_down(int parent)
+    {
+        int left_child, right_child,max_index,temp;
+
+        left_child = (2*parent) + 1;
+        right_child = (2*parent) + 2;
+
+        max_index = parent;
+        if((left_child<heap_size) && (BT[left_child] > BT[parent]))
+            max_index = left_child;
+        if((right_child<heap_size) && (BT[right_child] > BT[max_index]))
+            max_index = right_child;
+
+        if(parent != max_index)
+        {
+            temp =  BT[parent];
+            BT[parent] = BT[max_index];
+            BT[max_index] = temp;
+            heapify_top_down(max_index);
+        }
+    }
+    public void deleteParticularData(int search_data)
+    {
+        for (int i=0;i<=heap_size;i++)
+        {
+            try {
+                if (BT[i] == search_data)
+                {
+                    BT[i] = BT[heap_size-1];
+                    heap_size = heap_size-1;
+                    heapify_top_down(i);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Data not found: ");
+            }
+        }
+    }
+    public void update_data(int previous, int update)
+    {
+        for (int i=0;i<=heap_size;i++)
+        {
+            try {
+                if (BT[i]==previous)
+                {
+                    BT[i] = update;
+                    heapify_bottom_up(i);
+                    break;
+                }
+            }catch (Exception e)
+            {
+                System.out.println("Previous data not found: ");
+            }
+        }
+    }
+    public void printDescendingOrder()
+    {
+        while (heap_size!=0)
+        {
+            System.out.print(BT[0]+" ");
+            BT[0] = BT[heap_size-1];
+            heap_size = heap_size -1;
+            heapify_top_down(0);
+            printDescendingOrder();
+        }
+    }
+    int[] array = new int[100];
+    int index =0;
+    public void printAscendingOrder()
+    {
+        for (int i=0;i<heap_size;i++)
+        {
+            array[index] = BT[i];
+            index = index + 1;
+        }
+        for (int i=0;i<index;i++)
+        {
+            ConvertMinHeap(i);
+        }
+        printAscendingOrder1();
+    }
+    public void ConvertMinHeap(int index)
+    {   int temp = 0;
+        while (true)
+        {
+            if (array[index]>=array[(index-1)/2]) break;
+            else
+                temp = array[index];
+            array[index] = array[(index-1)/2];
+            array[(index-1)/2] = temp;
+            index = (index-1)/2;
+        }
+    }
+    public void printAscendingOrder1()
+    {
+        while (index !=0)
+        {
+            System.out.print(array[0]+" ");
+            array[0] = array[index-1];
+            index = index -1;
+            Min(0);
+            printAscendingOrder1();
+
+        }
+    }
+    public void Min(int parent)
+    {
+        int left_child,right_child,max_index=0,temp=0;
+        left_child =(2*parent) + 1;
+        right_child = (2*parent) + 2;
+        max_index = parent;
+        if ((left_child<index) &&(array[left_child]<array[parent]))
+        {
+            max_index = left_child;
+        }
+        if ((right_child<index) &&(array[right_child]<array[max_index]))
+        {
+            max_index = right_child;
+        }
+        if (max_index!=parent)
+        {
+            temp = array[parent];
+            array[parent] = array[max_index];
+            array[max_index] = temp;
+            Min(max_index);
+        }
+
+
+    }
+}
+public class MaxHeapImplementation {
+    public static void main(String[] args) {
+       MaxHeap heap = new MaxHeap();
+        heap.insert(5);
+        heap.insert(10);
+        heap.insert(12);
+        heap.insert(-13);
+        heap.insert(134);
+        //print the haep
+        //heap.print();
+        //search the heap data
+        //heap.searchNumber(13);
+//        heap.deleteRoot();
+//        heap.print();
+//        heap.deleteParticularData(13);
+//        heap.update_data(5,100);
+//        heap.print();
+//        heap.printDescendingOrder();
+        heap.printAscendingOrder();
+    }
+}
